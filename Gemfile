@@ -1,10 +1,20 @@
 source 'https://rubygems.org'
 
+#Rob: The video 'Heroku for Live Production Servers' has a super-imposed comment to
+#     remove all ">=" or "~>" version numbers, but the video did not.  I did not, but 
+#     but if I run into problems I will.
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
+
+# Use postgresql as the database for production
+group :production do
+    gem 'pg'
+    gem 'rails_12factor'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
